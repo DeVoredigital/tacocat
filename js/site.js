@@ -43,7 +43,7 @@ function checkForPalindrome(userString){
 
     returnObj.reversed = revString;
 
-    return returnObj;
+    return returnObj; 
 
 }
 
