@@ -1,75 +1,60 @@
-// Section 4 Hello World
-function helloWorld(){
-    alert("hello world");
-}
-
-
-
 //get the values from the page
 //Starts or Controller Function
+
 function getValues(){
+
+    //make sure the alert is invisible
+    document.getElementById("alert").classList.add("invisible");
+
     //get values from the page
-    let startValue = document.getElementById("startValue").value;
-    let endValue = document.getElementById("endValue").value;
-
-    //parse into Integers
-    startValue = parseInt(startValue);
-    endValue = parseInt(endValue);
-
-    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-        //we call generateNumber
-        let numbers = generateNumbers(startValue,endValue);
-        //we call displayNumbers
-        displayNumbers(numbers);
-
-    }else{
-        alert("You must enter an integer.")
-    }
-
+    let userString = document.getElementById("userString").value;
     
+    //check for a palindrome
+    let returnObj = checkForPalindrome(userString);
 
+    displayMessage(returnObj);
 }
 
-//Genreate Numbers from the Start Value to the End Value
+//check if a string is a palindrome
 //Logic function(s)
-function generateNumbers(sValue, eValue){
-    let numbers = [];
 
-    //we want all numbers from start to end
-    for(let index = sValue; index <= eValue; index ++){
+function checkForPalindrome(userString){
 
-        //this will execute in a loop until index = evalue
-        numbers.push(index);
+    //check only for characters, not upper, not spaces, not !
+    userString = userString.toLowerCase();
+
+    //regex
+    let regex = /[^a-z0-9]/gi; // only return a-z 0-9
+    userString = userString.replace(regex, "");
+
+    let revString = [];
+    let returnObj = {};
+
+    for (let index = userString.length-1; index >= 0; index--) {
+        revString += userString[index];
+        
+    }
+    if (revString == userString) {
+        returnObj.msg = "Indeed, you entered a palindrome."
+    }
+    else{
+        returnObj.msg = "That's not a palindrome."
     }
 
+    returnObj.reversed = revString;
 
-    return numbers;
-
+    return returnObj;
 
 }
 
-//Display the Even Numbers in BOLD
+//Display the Message 
 //display or view function
-function displayNumbers(numbers){
 
-    let templateRows = "";
+function displayMessage(returnObj){
 
-    for (let index = 0; index < numbers.length; index++) {
-        
-        let className = "even";
-        
-        let number = numbers[index];
+    document.getElementById("alertHeader").innerHTML = returnObj.msg
+    document.getElementById("msg").innerHTML = `Your phrase reversed: ${returnObj.reversed}`;
 
-        if(number % 2 == 0){
-            className = "even";
-        }
-        else{
-            className = "odd";
-        }
-        
-        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
-
-    }
-    document.getElementById("results").innerHTML = templateRows;
+    document.getElementById("alert").classList.remove("invisible");
 
 }
