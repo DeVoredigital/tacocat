@@ -1,0 +1,90 @@
+:root{
+    --primary-color: #ffffff;
+    --secondary-color: red;
+    --dark-color: #292929;
+    --white-color: #e7e7e7;
+    --font-color: #292929;
+    --navbuttonlinks-color: #40578B;
+
+}
+.odd{
+    font-weight: 100;
+}
+.even{
+    font-weight: bold;
+    font-size: large;
+}
+
+.logoFont {
+    font-family: 'Racing Sans One', cursive;
+  
+}
+
+body{
+    color:var(--dark-color);
+}
+
+nav{
+    background-color: var(--white-color);
+
+}
+
+footer{
+    background-color: var(--dark-color);
+    padding-right: 1rem;
+
+}
+footer .social>a
+{
+    color: var(--primary-color);
+    opacity: 0.75;
+}
+
+footer .social>a:hover
+{
+    
+    color: var(--dark-color);
+    opacity: 0.9;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--font-color);
+}
+
+.bsicon{
+    color: rgb(119,46,157);
+}
+.jsicon{
+    color: rgb(247,223,31);
+}
+.html5icon{
+    color: rgb(227,79,38);
+}
+.cssicon{
+    color: rgb(22,114,182);
+}
+
+.checklist >li i{
+        color: var(--secondary-color);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+white-space: pre-wrap;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+main>.container {
+    padding: 60px 15px 0;
+    margin-bottom: 5rem;
+}
+
+.sticky-footer {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
